@@ -12,6 +12,7 @@ import { DidStatusKeys } from "src/constants/didStatus";
 import { useNavigate } from "react-router-dom";
 import { getClientKey } from "../utils";
 import { guidGenerator } from "src/utils/guidGenerator";
+import { ethSdk } from "src/utils/EthSdk";
 
 const Container = styled(FlexContainer)`
   flex-direction: column;
@@ -35,7 +36,18 @@ const AddClientForm = () => {
   const [descriptionForm, setDescriptionForm] = useState<string>("");
   const [tokenForm, setTokenForm] = useState<string>("");
 
-  const onClickSubmit = () => {
+  const onClickSubmit = async () => {
+    // verify token
+    const tokenDetails = await ethSdk.verifyIssuerDelegateSigner(
+      tokenForm,
+      account!
+    );
+
+    if (!tokenDetails.verified) {
+      alert("Invalid Token");
+      return;
+    }
+
     const storageKey = getClientKey(account || "");
     const currentData = Storage.get(storageKey) || {};
 
@@ -48,7 +60,7 @@ const AddClientForm = () => {
       address: addressForm,
       description: descriptionForm,
       didToken: tokenForm,
-      didStatus: DidStatusKeys.inactive,
+      didStatus: DidStatusKeys.active,
       didStatusCheckTimestamp: Date.now(),
       timestamp: Date.now(),
     };
@@ -62,7 +74,7 @@ const AddClientForm = () => {
   };
 
   return (
-    <Container data-testid="send-form">
+    <Container>
       <Typography variant="ts16b" colorCode={["black", 900]}>
         Name
       </Typography>

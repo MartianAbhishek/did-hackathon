@@ -34,7 +34,7 @@ const Home = () => {
 
 
   useEffect(() => {
-    if(account && !searchParams.get("feature")) {
+    if(!searchParams.get("feature")) {
       // push new state
       navigate({
         pathname: '/',
