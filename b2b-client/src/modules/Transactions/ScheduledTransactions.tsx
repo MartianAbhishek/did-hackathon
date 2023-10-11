@@ -4,6 +4,9 @@ import getEllipsisTxt from "src/utils/getEllipsisText";
 import Spinner from "src/components/Spinner";
 import FlexContainer from "src/components/FlexContainer";
 import styled from "styled-components";
+import PrimaryButton from "src/components/Buttons/PrimaryButton";
+import { useNavigate } from "react-router-dom";
+import { Queries } from "src/modules/Dashboard/constants";
 
 interface IPropType {
   // TODO: add proper types
@@ -16,6 +19,10 @@ const Container = styled(FlexContainer)`
   background: ${({ theme }) => theme.colors.black[150]};
   padding: 1rem;
   border-radius: 20px;
+`;
+
+const Header = styled(FlexContainer)`
+  justify-content: space-between;
 `;
 
 const columns = [
@@ -47,10 +54,21 @@ const columns = [
 
 function ScheduledTransactions(props: IPropType) {
   const { transactions = [], txnLoading = false } = props;
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate({
+      pathname: '/',
+      search: Queries.addScheduledTxn,
+    })
+  }
 
   return (
     <Container>
-      <h3>Scheduled Transactions</h3>
+      <Header>
+        <h3>Scheduled Transactions</h3>
+        <PrimaryButton width="10%" onClick={onClick}>ADD+</PrimaryButton>
+      </Header>
       <Table data={transactions as any} columns={columns as any} />
       {txnLoading && (
         <Spinner style={{ marginLeft: "50%", marginTop: "2rem" }} />

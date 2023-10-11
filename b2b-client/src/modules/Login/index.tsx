@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import FlexContainer from "src/components/FlexContainer";
 import Icon from "src/components/Icon";
-import PrimaryButton from "src/components/PrimaryButton";
+import PrimaryButton from "src/components/Buttons/PrimaryButton";
 import Spinner from "src/components/Spinner";
 import Typography from "src/components/Typography";
 import ChromeWebstoreIcon from "src/modules/Login/icons/chrome-web-store.webp";

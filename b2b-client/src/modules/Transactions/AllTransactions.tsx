@@ -15,6 +15,10 @@ const Container = styled(FlexContainer)`
   border-radius: 20px;
 `;
 
+const Header = styled(FlexContainer)`
+  justify-content: space-between;
+`;
+
 interface IPropType {
   transactions: ethers.providers.TransactionResponse[];
   txnLoading: boolean;
@@ -52,11 +56,11 @@ function AllTransactions(props: IPropType) {
 
   return (
     <Container>
-      <h3>Transaction History</h3>
+      <Header>
+        <h3>Transaction History</h3>
+      </Header>
       <Table data={transactions as any} columns={columns as any} />
-      {txnLoading && (
-        <Spinner style={{ marginTop: "2rem" }} />
-      )}
+      {txnLoading && <Spinner style={{ marginTop: "2rem" }} />}
     </Container>
   );
 }

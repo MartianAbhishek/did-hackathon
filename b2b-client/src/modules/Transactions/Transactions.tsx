@@ -5,9 +5,12 @@ import { WalletConnectContext } from "src/context";
 import { ethSdk } from "src/utils/EthSdk";
 import AllTransactions from "./AllTransactions";
 import ScheduledTransactions from "./ScheduledTransactions";
+import { ModuleKeys } from "./constants";
+import ScheduleTransaction from "./ScheduleTransaction";
 
 interface IPropType {
   state: string;
+  module?: string;
 }
 
 function Transactions(props: IPropType) {
@@ -33,15 +36,21 @@ function Transactions(props: IPropType) {
     fetchTransactions(account);
   }, [account]);
 
-  return (
-    <>
-      <h2>
-        Balance: {balance}
-      </h2>
-      <ScheduledTransactions transactions={[]} txnLoading={false} />
-      <AllTransactions transactions={transactions} txnLoading={txnLoading} />
-    </>
-  );
+  switch (props.module) {
+    case ModuleKeys.scheduleTxn:
+      return <ScheduleTransaction />;
+    default:
+      return (
+        <>
+          <h2>Balance: {balance}</h2>
+          <ScheduledTransactions transactions={[]} txnLoading={false} />
+          <AllTransactions
+            transactions={transactions}
+            txnLoading={txnLoading}
+          />
+        </>
+      );
+  }
 }
 
 export default Transactions;

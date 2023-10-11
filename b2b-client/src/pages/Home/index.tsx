@@ -5,6 +5,7 @@ import { device } from "src/styles/breakpoints";
 import styled from "styled-components";
 import FlexContainer from "src/components/FlexContainer";
 import DashboardModule from "src/modules/Dashboard";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Container = styled(FlexContainer)`
   height: 100vh;
@@ -27,6 +28,20 @@ const Home = () => {
     loading,
     deactivate,
   } = useContext(WalletConnectContext);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    if(account && !searchParams.get("feature")) {
+      // push new state
+      navigate({
+        pathname: '/',
+        search: '?feature=dashboard&state=default',
+      });
+    }
+  }, [])
 
 
   if (!account && !loading) {
