@@ -1,2 +1,2 @@
 # b2b-server
-Server which powers client management off-chain with complete security and efficiency
+web2 service which powers client management off-chain with complete security and efficiency
