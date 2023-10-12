@@ -40,5 +40,6 @@ Our project aims to revolutionize the way businesses manage their clients and fi
 Each folder contains its own README file which properly explains and guide through that particular module
 - [b2b-client](https://github.com/MartianAbhishek/did-hackathon/blob/main/b2b-client/README.md): Web App which demostrates the potential use of DID in B2B industry
 - [b2b-contract](https://github.com/MartianAbhishek/did-hackathon/blob/main/b2b-contract/README.md): Smart Contract which is used by the project to schedule transaction for businesses
+- [b2b-server](https://github.com/MartianAbhishek/did-hackathon/blob/main/b2b-server/README.md): web2 service which powers client management off-chain with complete security and efficiency
 
 ### Live Preview (Demo): https://did-hack.web.app
