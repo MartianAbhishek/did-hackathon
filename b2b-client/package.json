@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@jpmorganchase/onyx-ssi-sdk": "0.0.1",
     "@react-to-styled/table": "^0.6.1-alpha.2",
     "@tanstack/react-table": "^8.10.6",
     "@testing-library/jest-dom": "5.16.4",
@@ -18,6 +19,7 @@
     "ethers": "5.7.1",
     "ethr-did": "2.3.3",
     "ethr-did-resolver": "6.2.3",
+    "jsonwebtoken": "9.0.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-router-dom": "^6.16.0",
@@ -53,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.3",
     "@types/styled-components": "^5.1.26",
     "assert": "2.0.0",
     "autoprefixer": "10.4.4",

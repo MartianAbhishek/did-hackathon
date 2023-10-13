@@ -120,16 +120,21 @@ const MainComponent = (props: IMainComponentPropType) => {
   return (
     <DropdownMainContainer>
       <Typography variant="ts14r" colorCode={["black", 800]}>
-        {`${selectedClient.name} (${getEllipsisTxt(selectedClient.address)})` ||
-          defaultTitle}
+        {selectedClient.name
+          ? `${selectedClient.name} (${getEllipsisTxt(selectedClient.address)})`
+          : defaultTitle}
       </Typography>
     </DropdownMainContainer>
   );
 };
 
 const DropdownComponent = (props: IDropdownComponentPropType) => {
-  const { selectedClient, setSelectedClient, closeDropdown, setTotalClients } =
-    props;
+  const {
+    selectedClient,
+    setSelectedClient,
+    closeDropdown,
+    setTotalClients,
+  } = props;
   const [data, setData] = useState({});
   const { account } = useContext(WalletConnectContext);
 

@@ -1,7 +1,7 @@
+import { verifyDIDs } from "@jpmorganchase/onyx-ssi-sdk";
 import { Resolver } from "did-resolver";
 import { ethers } from "ethers";
 import { formatEther } from "ethers/lib/utils";
-import { EthrDID } from "ethr-did";
 import { getResolver } from "ethr-did-resolver";
 
 export type EthSdkTypes = {
@@ -82,23 +82,13 @@ export class EthSdk {
         networks: [{ name: "0x5", provider: this.web3Provider }],
         registry: registryAddress, // optional as ethr-did-resolver sets this up as default
       };
-
       const ethrDidResolver = getResolver(providerConfig);
       const didResolver = new Resolver(ethrDidResolver);
-
-      // Get the Metamask configured chainId
-      const chainNameOrId = (await this.web3Provider.getNetwork()).chainId;
-
-      // Wrap the audience address to enable calling of verify method
-      const audienceDid = new EthrDID({
-        identifier: audienceAddress,
-        provider: this.web3Provider,
-        chainNameOrId,
-      });
-
-      // Utilise ethr-did to verify
-      const JWTVerified = await audienceDid.verifyJWT(signedJWT, didResolver);
-      return JWTVerified;
+      const verified = await verifyDIDs(signedJWT, didResolver);
+      console.log(verified);
+      return {
+        verified,
+      };
     } catch (err) {
       console.error(err);
       return {
