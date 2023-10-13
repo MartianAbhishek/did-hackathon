@@ -2,7 +2,7 @@
 
 ### Project Description
 
-Building a Multi-Business Client Management Web Application with Decentralized Identity Verification and Transaction Scheduling
+Building a Multi-Business Client Management Web Application with Decentralized Identity Verification using [Onyx SSI SDK](https://github.com/jpmorganchase/onyx-ssi-sdk) and Transaction Scheduling
 
 In the ever-evolving landscape of business operations and relationships, managing multiple clients efficiently is vital for any enterprise. However, traditional client management methods can often be cumbersome and lack the security and transparency necessary for the digital age. This project aims to address these challenges by developing a cutting-edge web application that simplifies and streamlines client registration, verification, and transaction scheduling for businesses.
 
