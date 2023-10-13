@@ -12,10 +12,11 @@ const registryAddress: string = "0xdca7ef03e98e0dc2b855be647c39abe984fcf21b";
 
 export class EthSdk {
   provider: ethers.providers.EtherscanProvider;
-  web3Provider: ethers.providers.Web3Provider;
+  web3Provider: ethers.providers.Web3Provider | undefined;
 
   constructor({ network }: EthSdkTypes) {
     this.provider = new ethers.providers.EtherscanProvider(network);
+    if (!window.ethereum) return;
     this.web3Provider = new ethers.providers.Web3Provider(
       window.ethereum!,
       network
@@ -24,6 +25,7 @@ export class EthSdk {
 
   changeNetwork(network: string) {
     this.provider = new ethers.providers.EtherscanProvider(network);
+    if (!window.ethereum) return;
     this.web3Provider = new ethers.providers.Web3Provider(
       window.ethereum!,
       network

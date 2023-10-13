@@ -78,25 +78,33 @@ const LoginModule = () => {
       {/* @ts-ignore */}
       {/* <Logo className="icon" width={30} height={30} /> */}
       <Typography variant="ts20b" colorCode={["black", 900]}>
-          {TextsContent?.title}
-        </Typography>
-        <Typography
-          variant="ts14r"
-          style={{ textAlign: "center" }}
-          colorCode={["black", 600]}
-        >
-          {TextsContent?.lightSubtext1} <br />
-          {TextsContent?.lightSubtext2}
-        </Typography>
-      <BottomDiv>
-      <PrimaryButton
-        css={`
-          max-width: 80%;
-        `}
-        onClick={connectWallet}
+        {TextsContent?.title}
+      </Typography>
+      <Typography
+        variant="ts14r"
+        style={{ textAlign: "center" }}
+        colorCode={["black", 600]}
       >
-        {loading ? <Spinner /> : error ? 'Approve connection request from wallet' : TextsContent?.connectWallet}
-      </PrimaryButton>
+        {TextsContent?.lightSubtext1} <br />
+        {TextsContent?.lightSubtext2}
+      </Typography>
+      <BottomDiv>
+        <PrimaryButton
+          css={`
+            max-width: 80%;
+          `}
+          onClick={connectWallet}
+        >
+          {!window.ethereum ? (
+            "Ethereum wallet not found"
+          ) : loading ? (
+            <Spinner />
+          ) : error ? (
+            "Approve connection request from wallet"
+          ) : (
+            TextsContent?.connectWallet
+          )}
+        </PrimaryButton>
       </BottomDiv>
     </Container>
   );
