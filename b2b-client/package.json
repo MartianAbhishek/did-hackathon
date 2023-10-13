@@ -1,6 +1,6 @@
 {
   "name": "b2b-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@jpmorganchase/onyx-ssi-sdk": "0.0.1",

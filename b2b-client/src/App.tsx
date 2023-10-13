@@ -7,6 +7,7 @@ import getThemeFormat from "src/utils/getThemeFormat";
 import { darkModeColors, lightModeColors } from "src/tokens/colors/color";
 import { RouterProvider } from "react-router-dom";
 import { router } from "src/router";
+import packageJson from "src/../package.json";
 
 const dappConfig = {
   notifications: {
@@ -29,6 +30,9 @@ function App() {
           }
         >
           <RouterProvider router={router} />
+          <span style={{ marginLeft: "2rem", fontSize: 12 }}>
+            Version {packageJson.version}
+          </span>
         </ThemeProvider>
       </WalletAuthProvider>
     </DAppProvider>
